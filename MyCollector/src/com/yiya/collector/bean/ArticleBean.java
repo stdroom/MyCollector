@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class ArticleBean {
     // 主键
-    int post_id = 0;
+    int article_id = 0;
     //标题
     String title = "";
     //文章内容 路径
@@ -35,15 +35,15 @@ public class ArticleBean {
     // 标签
     ArrayList<String> tags = new ArrayList<String>();
 
-    public int getPost_id() {
-        return post_id;
-    }
+    public int getArticle_id() {
+		return article_id;
+	}
 
-    public void setPost_id(int post_id) {
-        this.post_id = post_id;
-    }
+	public void setArticle_id(int article_id) {
+		this.article_id = article_id;
+	}
 
-    public String getTitle() {
+	public String getTitle() {
         return title;
     }
 

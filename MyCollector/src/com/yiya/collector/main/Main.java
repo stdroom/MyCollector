@@ -2,7 +2,7 @@ package com.yiya.collector.main;
 
 
 import com.yiya.collector.RuleImpl.image.uumn.UumnColumnImagePageParse;
-import com.yiya.collector.bean.ColumnEachImagePageBean;
+import com.yiya.collector.bean.ColumnEachPageBean;
 import com.yiya.collector.runnable.ParseImagePageRunnable;
 import com.yiya.collector.utils.ExcutorServiceUtils;
 
@@ -28,7 +28,7 @@ public class Main {
 //        bean.setBaseUrl("http://www.fengdu100.com/paoniu/");
 //        ParseRunnable run = new ParseRunnable(bean,new FengDuCloumnPageParse());
     	
-    	ColumnEachImagePageBean bean = new ColumnEachImagePageBean();
+    	ColumnEachPageBean bean = new ColumnEachPageBean();
     	bean.setIndexUrl("http://www.uumnt.com/sheji/list_1.html");
     	bean.setBaseUrl("http://www.uumnt.com/");
     	ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new UumnColumnImagePageParse());

@@ -7,7 +7,7 @@ import org.jsoup.nodes.Document;
  */
 public class ColumnEachPageBean {
     //栏目分类id
-    private int cate_id = 0;
+    private int cata_id = 0;
 
     // 网站域名
     private String baseUrl = "";
@@ -33,15 +33,17 @@ public class ColumnEachPageBean {
     // 解析异常日志
     private String exception  = "";
 
-    public int getCate_id() {
-        return cate_id;
-    }
+    
 
-    public void setCate_id(int cate_id) {
-        this.cate_id = cate_id;
-    }
+    public int getCata_id() {
+		return cata_id;
+	}
 
-    public String getBaseUrl() {
+	public void setCata_id(int cata_id) {
+		this.cata_id = cata_id;
+	}
+
+	public String getBaseUrl() {
         return baseUrl;
     }
 

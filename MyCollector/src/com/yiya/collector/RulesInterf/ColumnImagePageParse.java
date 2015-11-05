@@ -2,7 +2,7 @@ package com.yiya.collector.RulesInterf;
 
 import java.util.ArrayList;
 
-import com.yiya.collector.bean.ColumnEachImagePageBean;
+import com.yiya.collector.bean.ColumnEachPageBean;
 import com.yiya.collector.bean.ImageBean;
 
 /**
@@ -11,10 +11,10 @@ import com.yiya.collector.bean.ImageBean;
 public interface ColumnImagePageParse {
 
     // 根据页面获取该页面的文章列表数据
-    public ArrayList<ImageBean> getImageBeans(ColumnEachImagePageBean bean);
+    public ArrayList<ImageBean> getImageBeans(ColumnEachPageBean bean);
 
     // 根据页面javabean对象 递归判断 是否有下一页 并不断解析
-    public ColumnEachImagePageBean getNextPage(ColumnEachImagePageBean pageBean);
+    public ColumnEachPageBean getNextPage(ColumnEachPageBean pageBean);
 
     // 解析内容详情
     public void ParseImagesByImageBean(ImageBean bean);

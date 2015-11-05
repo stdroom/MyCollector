@@ -10,23 +10,24 @@ import org.jsoup.nodes.Document;
 public class ImageBean {
 
     // 主键
-    int post_id = 0;
+    int img_id = 0;
     // 图片题目
     String title = "";
-    //文章内容 路径
+    // 本地路径
     String contxtPath = "";
-    // 文章原链接地址
+    
+    // 文章原链接地址首页
     String contextHtml = "";
+    
     //分类
     int cata_id = 0;
-    //来源
-    String fromUrl = "";
 
     //图片有几页 并非有多少张图片
     int pageNum = 0;
 
     // 当前正在解析的页面
     int currentPage = 0;
+    
     // 当前解析网页的地址
     String currentPageUrl = "";
 
@@ -45,20 +46,27 @@ public class ImageBean {
 
     //更新日期
     String updateed_at = "";
+    
     // 缩略图地址
     String thumbNail = "";
 
-    // 图片路径
+    // 原图片路径
     ArrayList<String> imgPath = new ArrayList<String>();
+    // 本地图片路径
+    ArrayList<String> localPath = new ArrayList<String>();
+    
+    // 服务端用
+    String imgPaths  = "";
+    String localPaths = "";
     
     Document doc = null;
 
-	public int getPost_id() {
-		return post_id;
+	public int getImg_id() {
+		return img_id;
 	}
 
-	public void setPost_id(int post_id) {
-		this.post_id = post_id;
+	public void setPost_id(int img_id) {
+		this.img_id = img_id;
 	}
 
 	public String getTitle() {
@@ -93,13 +101,6 @@ public class ImageBean {
 		this.cata_id = cata_id;
 	}
 
-	public String getFromUrl() {
-		return fromUrl;
-	}
-
-	public void setFromUrl(String fromUrl) {
-		this.fromUrl = fromUrl;
-	}
 
 	public int getPageNum() {
 		return pageNum;
@@ -198,5 +199,34 @@ public class ImageBean {
 	public void setBaseUrl(String baseUrl) {
 		this.baseUrl = baseUrl;
 	}
+
+	public ArrayList<String> getLocalPath() {
+		return localPath;
+	}
+
+	public void setLocalPath(ArrayList<String> localPath) {
+		this.localPath = localPath;
+	}
+
+	public String getImgPaths() {
+		return imgPaths;
+	}
+
+	public void setImgPaths(String imgPaths) {
+		this.imgPaths = imgPaths;
+	}
+
+	public String getLocalPaths() {
+		return localPaths;
+	}
+
+	public void setLocalPaths(String localPaths) {
+		this.localPaths = localPaths;
+	}
+
+	public void setImg_id(int img_id) {
+		this.img_id = img_id;
+	}
+	
 	
 }

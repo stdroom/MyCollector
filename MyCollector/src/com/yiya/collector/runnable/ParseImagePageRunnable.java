@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.yiya.collector.RulesInterf.ColumnImagePageParse;
 import com.yiya.collector.bean.ArticleBean;
-import com.yiya.collector.bean.ColumnEachImagePageBean;
+import com.yiya.collector.bean.ColumnEachPageBean;
 import com.yiya.collector.bean.ImageBean;
 import com.yiya.collector.utils.ExcutorServiceUtils;
 
@@ -13,10 +13,10 @@ import com.yiya.collector.utils.ExcutorServiceUtils;
  */
 public class ParseImagePageRunnable implements Runnable{
 
-    private ColumnEachImagePageBean bean ;
+    private ColumnEachPageBean bean ;
     private ColumnImagePageParse pageParse;
 
-    public ParseImagePageRunnable(ColumnEachImagePageBean bean,ColumnImagePageParse parse){
+    public ParseImagePageRunnable(ColumnEachPageBean bean,ColumnImagePageParse parse){
         this.bean = bean;
         this.pageParse = parse;
     }

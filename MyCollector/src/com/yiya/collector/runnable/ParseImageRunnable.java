@@ -1,10 +1,7 @@
 package com.yiya.collector.runnable;
 
-import java.util.ArrayList;
 
 import com.yiya.collector.RulesInterf.ColumnImagePageParse;
-import com.yiya.collector.bean.ArticleBean;
-import com.yiya.collector.bean.ColumnEachImagePageBean;
 import com.yiya.collector.bean.ImageBean;
 import com.yiya.collector.utils.ExcutorServiceUtils;
 

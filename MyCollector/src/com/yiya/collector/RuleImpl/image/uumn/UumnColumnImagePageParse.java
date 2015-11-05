@@ -10,7 +10,7 @@ import org.jsoup.select.Elements;
 
 import com.yiya.collector.RulesInterf.ColumnImagePageParse;
 import com.yiya.collector.bean.ArticleBean;
-import com.yiya.collector.bean.ColumnEachImagePageBean;
+import com.yiya.collector.bean.ColumnEachPageBean;
 import com.yiya.collector.bean.ImageBean;
 /**
  * 
@@ -24,7 +24,7 @@ import com.yiya.collector.bean.ImageBean;
 public class UumnColumnImagePageParse implements ColumnImagePageParse{
 
 	@Override
-	public ArrayList<ImageBean> getImageBeans(ColumnEachImagePageBean pageBean) {
+	public ArrayList<ImageBean> getImageBeans(ColumnEachPageBean pageBean) {
 		Document content = null;
         try {
             Document doc;
@@ -88,7 +88,7 @@ public class UumnColumnImagePageParse implements ColumnImagePageParse{
                     bean.setThumbNail(imgUrl);
                     bean.setContextHtml(link);
                     bean.setBaseUrl(pageBean.getBaseUrl());
-                    bean.setCata_id(pageBean.getCate_id());
+                    bean.setCata_id(pageBean.getCata_id());
                     tempList.add(bean);
             }
         }
@@ -97,7 +97,7 @@ public class UumnColumnImagePageParse implements ColumnImagePageParse{
 	}
 
 	@Override
-	public ColumnEachImagePageBean getNextPage(ColumnEachImagePageBean pageBean) {
+	public ColumnEachPageBean getNextPage(ColumnEachPageBean pageBean) {
 		if(pageBean!=null && pageBean.getDoc()!=null){
             Document doc = pageBean.getDoc();
             Elements eless = doc.select(".page.both");
