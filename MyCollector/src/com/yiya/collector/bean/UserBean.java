@@ -27,6 +27,9 @@ public class UserBean {
 	private int id;
 	
 	
+	public UserBean(){
+	}
+	
 
 	public String getUsername() {
 		return username;

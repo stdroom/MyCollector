@@ -14,7 +14,7 @@ public class ImageBean {
     // 图片题目
     String title = "";
     // 本地路径
-    String contxtPath = "";
+    String contextPath = "";
     
     // 文章原链接地址首页
     String contextHtml = "";
@@ -77,12 +77,12 @@ public class ImageBean {
 		this.title = title;
 	}
 
-	public String getContxtPath() {
-		return contxtPath;
+	public String getContextPath() {
+		return contextPath;
 	}
 
-	public void setContxtPath(String contxtPath) {
-		this.contxtPath = contxtPath;
+	public void setContextPath(String contextPath) {
+		this.contextPath = contextPath;
 	}
 
 	public String getContextHtml() {
@@ -227,6 +227,7 @@ public class ImageBean {
 	public void setImg_id(int img_id) {
 		this.img_id = img_id;
 	}
+	
 	
 	
 }

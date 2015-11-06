@@ -1,7 +1,7 @@
- <?xml version="1.0" encoding="UTF-8"?> 
- <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
- 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
- <mapper namespace="com.yiya.collector.dao.UserDao">
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.yiya.collector.dao.UserDao">
      <select id="getUser" parameterType="com.yiya.collector.bean.UserBean" resultType="com.yiya.collector.bean.UserBean">
          select * from user where username=#{username} and password=#{password}
      </select>
@@ -12,5 +12,6 @@
           UPDATE user SET password=#{password} WHERE id=#{id}
      </update>
      <delete id="deleteUser" parameterType="int">
+         DELETE FROM user WHERE id=#{id}  
      </delete>
- </mapper>
+</mapper>

@@ -28,6 +28,10 @@ public class FileUtils {
 
 	public static boolean saveImageToLocal(String urls,String path){  
 		try{
+			File imageFile = new File(path);  
+			if(imageFile.exists()){
+				return true;
+			}
 			//new一个URL对象  
 			URL url = new URL(urls);  
 			//打开链接  
@@ -41,7 +45,7 @@ public class FileUtils {
 			//得到图片的二进制数据，以二进制封装得到数据，具有通用性  
 			byte[] data = readInputStream(inStream);  
 			//new一个文件对象用来保存图片，默认保存当前工程根目录  
-			File imageFile = new File(path);  
+			
 			//创建输出流  
 			FileOutputStream outStream = new FileOutputStream(imageFile);  
 			//写入数据  

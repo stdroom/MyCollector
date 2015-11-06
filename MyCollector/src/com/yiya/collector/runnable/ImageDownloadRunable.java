@@ -13,7 +13,10 @@ import java.io.File;
 import java.util.ArrayList;
 
 import com.yiya.collector.bean.ImageBean;
+import com.yiya.collector.dao.ImageDao;
+import com.yiya.collector.utils.ApplicationContextUtils;
 import com.yiya.collector.utils.FileUtils;
+import com.yiya.collector.utils.MD5Utils;
 
 /**
  * 类名: ImageDownloadRunable <br/>
@@ -33,15 +36,31 @@ public class ImageDownloadRunable implements Runnable{
 	
 	@Override
 	public void run() {
-		String path = "D://test/"+bean.getCata_id()+"/"+bean.getTitle().trim()+"/";
+		String path = "D://test/"+bean.getCata_id()+"/";
+		String contextPath = MD5Utils.md5(bean.getTitle())+"/";
+		path = path +contextPath;
+		
 		File file = new File(path);
 		file.mkdirs();
 		ArrayList<String> urls = bean.getImgPath();
-		for(String url:urls){
+		bean.setPageNum(urls.size());
+		StringBuffer contextPaths = new StringBuffer();
+		int size = urls.size();
+		for(int i = 0 ; i < size;i++){
+			String url = urls.get(i);
 			String name = url.substring(url.lastIndexOf("/"));
+			if(i == 0){
+				contextPaths.append(contextPath+name);
+			}else{
+				contextPaths.append(";"+contextPath+name);
+			}
 			String imgPath = path+name;
 			FileUtils.saveImageToLocal(url, imgPath);
 		}
+		bean.setImgPaths(contextPaths.toString());
+		
+		ImageDao dao = (ImageDao)ApplicationContextUtils.context.getBean("imageDao");
+		dao.insertImageBean(bean);
 	}
 
 }

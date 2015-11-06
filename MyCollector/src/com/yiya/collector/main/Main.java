@@ -1,11 +1,19 @@
 package com.yiya.collector.main;
 
 
+import java.util.ArrayList;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.yiya.collector.bean.UserBean;
-import com.yiya.collector.dao.UserDao;
+import com.yiya.collector.RuleImpl.image.uumn.UumnColumnImagePageParse;
+import com.yiya.collector.bean.ColumnEachPageBean;
+import com.yiya.collector.bean.ImageBean;
+import com.yiya.collector.dao.ColumnEachPageDao;
+import com.yiya.collector.dao.ImageDao;
+import com.yiya.collector.runnable.ParseImagePageRunnable;
+import com.yiya.collector.utils.ApplicationContextUtils;
+import com.yiya.collector.utils.ExcutorServiceUtils;
 
 public class Main {
 
@@ -29,18 +37,31 @@ public class Main {
 //        bean.setBaseUrl("http://www.fengdu100.com/paoniu/");
 //        ParseRunnable run = new ParseRunnable(bean,new FengDuCloumnPageParse());
     	
-//    	ColumnEachPageBean bean = new ColumnEachPageBean();
-//    	bean.setIndexUrl("http://www.uumnt.com/siwa/list_1.html");
-//    	bean.setBaseUrl("http://www.uumnt.com/");
-//    	ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new UumnColumnImagePageParse());
-//
-//        ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
+    	ColumnEachPageBean bean = new ColumnEachPageBean();
+    	bean.setIndexUrl("http://www.uumnt.com/sheji/list_1.html");
+    	bean.setBaseUrl("http://www.uumnt.com/");
+    	bean.setCata_id(1101);
+    	ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new UumnColumnImagePageParse());
+
+        ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
     	
-    	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-    	UserBean bean = (UserBean)context.getBean("as");
-    	UserDao dao = (UserDao)context.getBean("userDao");
+//    	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+//    	ColumnEachPageDao dao = (ColumnEachPageDao)context.getBean("columnEachPageDao");
+//    	ArrayList<ColumnEachPageBean> list = (ArrayList<ColumnEachPageBean>)dao.getColumnEachPageDaoList();
+//    	if(list == null){
+//    		System.out.println("list is null");
+//    	}else{
+//    		for(ColumnEachPageBean bean : list){
+//    			bean.println();
+//    		}
+//    	}
     	
-    	dao.addUser(bean);
+//    	ImageDao dao  = (ImageDao)ApplicationContextUtils.context.getBean("imageDao");
+//    	ImageBean bean = new ImageBean();
+//    	bean.setBaseUrl("baseUrl");
+//    	bean.setCata_id(1101);
+//    	bean.setContextHtml(";asd;asd");
+//    	dao.insertImageBean(bean);
     }
 
 }

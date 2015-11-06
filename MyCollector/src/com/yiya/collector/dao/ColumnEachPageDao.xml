@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.yiya.collector.dao.ColumnEachPageDao">
+    <resultMap id="columnEachPageBean" type="com.yiya.collector.bean.ColumnEachPageBean" >
+        <id column="cate_id" property="cata_id"/>
+        <result column="baseUrl" property="baseUrl"/>
+        <result column="indexUrl" property="indexUrl"/>
+        <result column="hasNext" property="hasNext"/>
+        <result column="isParseError" property="isParseError"/>
+    </resultMap>
+     <select id="getColumnEachPageDaoList" resultMap="columnEachPageBean">
+         select * from ColumnEachPage
+     </select>
+     <update id="udpateUser" parameterType="com.yiya.collector.bean.ColumnEachPageBean">
+          UPDATE ColumnEachPage SET totalNum=#{totalNum},currentPageUrl=#{currentPageUrl} WHERE cate_id=#{cata_id}
+     </update>
+</mapper>

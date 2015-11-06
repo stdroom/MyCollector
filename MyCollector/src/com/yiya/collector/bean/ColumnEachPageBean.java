@@ -116,4 +116,8 @@ public class ColumnEachPageBean {
     public void setDoc(Document doc) {
         this.doc = doc;
     }
+    
+    public void println(){
+    	System.out.println("cataId:"+cata_id+" baseUrl:"+baseUrl+" indexUrl:"+indexUrl+" isHasNext:" +hasNext+" exception:"+exception);
+    }
 }
