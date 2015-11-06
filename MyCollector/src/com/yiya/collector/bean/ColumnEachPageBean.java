@@ -33,7 +33,8 @@ public class ColumnEachPageBean {
     // 解析异常日志
     private String exception  = "";
 
-    
+    // 0 图片 1 文章
+    private int type = 0;
 
     public int getCata_id() {
 		return cata_id;
@@ -120,4 +121,14 @@ public class ColumnEachPageBean {
     public void println(){
     	System.out.println("cataId:"+cata_id+" baseUrl:"+baseUrl+" indexUrl:"+indexUrl+" isHasNext:" +hasNext+" exception:"+exception);
     }
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+    
+    
 }

@@ -33,7 +33,7 @@ public interface ColumnEachPageDao {
 	 * @return
 	 * @since 1.0
 	 */
-	public List<ColumnEachPageBean> getColumnEachPageDaoList();
+	public List<ColumnEachPageBean> getColumnEachPageDaoList(int type);
 	
 	/**
 	 * 
@@ -45,6 +45,21 @@ public interface ColumnEachPageDao {
 	 */
 	public void updateColumnEachPageDao(ColumnEachPageBean bean);
 	
+	/**
+	 * 
+	 * addColumnEachPageDao:(增加爬虫节点). <br/>
+	 *
+	 * TODO(这里描述这个方法适用条件 – 可选).<br/>
+	 * TODO(这里描述这个方法的执行流程 – 可选).<br/>
+	 * TODO(这里描述这个方法的使用方法 – 可选).<br/>
+	 * TODO(这里描述这个方法的注意事项 – 可选).<br/>
+	 *
+	 * @author leixun
+	 * 2015年11月6日下午8:15:18
+	 * @param bean
+	 * @since 1.0
+	 */
+	public void addColumnEachPageDao(ColumnEachPageBean bean);
 	
 }
 

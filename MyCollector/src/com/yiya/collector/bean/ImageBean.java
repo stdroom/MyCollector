@@ -13,8 +13,6 @@ public class ImageBean {
     int img_id = 0;
     // 图片题目
     String title = "";
-    // 本地路径
-    String contextPath = "";
     
     // 文章原链接地址首页
     String contextHtml = "";
@@ -75,14 +73,6 @@ public class ImageBean {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getContextPath() {
-		return contextPath;
-	}
-
-	public void setContextPath(String contextPath) {
-		this.contextPath = contextPath;
 	}
 
 	public String getContextHtml() {
@@ -228,6 +218,26 @@ public class ImageBean {
 		this.img_id = img_id;
 	}
 	
+	public void println(){
+//		#{cata_id},#{title},#{thumbNail},#{pageNum}#{imgPaths},#{contextPath},#{contextHtml},#{currentPageUrl},#{baseUrl
+		if("".equals(thumbNail)
+	|| "".equals(title)
+	|| "".equals(pageNum)
+	|| "".equals(imgPaths)
+	|| "".equals(contextHtml)
+	|| "".equals(currentPageUrl)
+	|| "".equals(baseUrl)
+	|| "".equals(cata_id)){
+			System.out.println("cateId:"+cata_id
+					+"\n"+"title:"+title
+					+"\n"+"thumbNail:"+thumbNail
+					+"\n"+"pageNum:"+pageNum
+					+"\n"+"imgPaths:"+imgPaths
+					+"\n"+"contextHtml:"+contextHtml
+					+"\n"+"currentPageUrl:"+currentPageUrl
+					+"\n"+"baseUrl:"+baseUrl);
+		}
+	}
 	
 	
 }

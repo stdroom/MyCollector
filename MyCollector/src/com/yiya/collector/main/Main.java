@@ -37,13 +37,23 @@ public class Main {
 //        bean.setBaseUrl("http://www.fengdu100.com/paoniu/");
 //        ParseRunnable run = new ParseRunnable(bean,new FengDuCloumnPageParse());
     	
-    	ColumnEachPageBean bean = new ColumnEachPageBean();
-    	bean.setIndexUrl("http://www.uumnt.com/sheji/list_1.html");
-    	bean.setBaseUrl("http://www.uumnt.com/");
-    	bean.setCata_id(1101);
-    	ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new UumnColumnImagePageParse());
-
-        ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
+    	ColumnEachPageDao dao = (ColumnEachPageDao)ApplicationContextUtils.context.getBean("columnEachPageDao");
+//    	String array[] = {"siwa/","xinggan/","rihan/","chemo/","qingchun/","zipai/"};
+//    	int size = array.length;
+//    	for(int i = 0 ; i < size ;i++){
+//    		ColumnEachPageBean bean = new ColumnEachPageBean();
+//    		bean.setIndexUrl("http://www.uumnt.com/"+array[i]);
+//    		bean.setBaseUrl("http://www.uumnt.com/");
+//    		bean.setType(0);
+//    		dao.addColumnEachPageDao(bean);
+//    	}
+    	ArrayList<ColumnEachPageBean> beans = (ArrayList<ColumnEachPageBean>)dao.getColumnEachPageDaoList(0);
+    	int size =  beans.size();
+    	for(int i = 0 ; i < size ; i++){
+    		ColumnEachPageBean bean = beans.get(i);
+    		ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new UumnColumnImagePageParse());
+    		ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
+    	}
     	
 //    	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //    	ColumnEachPageDao dao = (ColumnEachPageDao)context.getBean("columnEachPageDao");

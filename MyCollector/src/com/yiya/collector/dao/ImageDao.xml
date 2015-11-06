@@ -6,8 +6,8 @@
          select * from ImageBean
      </select>
      <insert id="insertImageBean" parameterType="com.yiya.collector.bean.ImageBean" flushCache="true">
-          INSERT INTO ImageBean (cata_id,thumbNail,imgPaths,contextPath,contextHtml,currentPageUrl,baseUrl) VALUES 
-            (#{cata_id},#{thumbNail},#{imgPaths},#{contextPath},#{contextHtml},#{currentPageUrl},#{baseUrl})
+          INSERT INTO ImageBean (cata_id,title,thumbNail,pageNum,imgPaths,contextHtml,currentPageUrl,baseUrl) VALUES 
+            (#{cata_id},#{title},#{thumbNail},#{pageNum},#{imgPaths},#{contextHtml},#{currentPageUrl},#{baseUrl})
      </insert>
      <delete id="deleteImageBean" parameterType="int">
          DELETE FROM ImageBean WHERE id=#{id} 
