@@ -1,10 +1,11 @@
 package com.yiya.collector.main;
 
 
-import com.yiya.collector.RuleImpl.image.uumn.UumnColumnImagePageParse;
-import com.yiya.collector.bean.ColumnEachPageBean;
-import com.yiya.collector.runnable.ParseImagePageRunnable;
-import com.yiya.collector.utils.ExcutorServiceUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.yiya.collector.bean.UserBean;
+import com.yiya.collector.dao.UserDao;
 
 public class Main {
 
@@ -28,12 +29,18 @@ public class Main {
 //        bean.setBaseUrl("http://www.fengdu100.com/paoniu/");
 //        ParseRunnable run = new ParseRunnable(bean,new FengDuCloumnPageParse());
     	
-    	ColumnEachPageBean bean = new ColumnEachPageBean();
-    	bean.setIndexUrl("http://www.uumnt.com/sheji/list_1.html");
-    	bean.setBaseUrl("http://www.uumnt.com/");
-    	ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new UumnColumnImagePageParse());
-
-        ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
+//    	ColumnEachPageBean bean = new ColumnEachPageBean();
+//    	bean.setIndexUrl("http://www.uumnt.com/siwa/list_1.html");
+//    	bean.setBaseUrl("http://www.uumnt.com/");
+//    	ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new UumnColumnImagePageParse());
+//
+//        ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
+    	
+    	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    	UserBean bean = (UserBean)context.getBean("as");
+    	UserDao dao = (UserDao)context.getBean("userDao");
+    	
+    	dao.addUser(bean);
     }
 
 }
