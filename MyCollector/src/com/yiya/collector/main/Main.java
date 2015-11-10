@@ -38,14 +38,6 @@ public class Main {
 //        bean.setBaseUrl("http://www.fengdu100.com/paoniu/");
 //        ParseRunnable run = new ParseRunnable(bean,new FengDuCloumnPageParse());
     	
-//    	ColumnEachPageBean bean = new ColumnEachPageBean();
-//    	bean.setIndexUrl("http://www.uumnt.com/sheji/list_1.html");
-//    	bean.setBaseUrl("http://www.uumnt.com/");
-//    	bean.setCata_id(1101);
-//    	ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new UumnColumnImagePageParse());
-
-    	
-//        ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
     	
 //    	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //    	ColumnEachPageDao dao = (ColumnEachPageDao)context.getBean("columnEachPageDao");
@@ -62,8 +54,11 @@ public class Main {
     	ArrayList<ImageBean> beans = (ArrayList<ImageBean>)dao.queryAllImageBean();
     	if(beans!=null){
     		System.out.println("beans:"+beans.size());
-    		ImageThumbNailRunnable run = new ImageThumbNailRunnable(beans.get(0));
-    		ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
+    		int size = beans.size();
+    		for(int i=0;i<size;i++){
+    			ImageThumbNailRunnable run = new ImageThumbNailRunnable(beans.get(i));
+    			ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
+    		}
     	}else{
     		System.out.println("beans is null");
     	}

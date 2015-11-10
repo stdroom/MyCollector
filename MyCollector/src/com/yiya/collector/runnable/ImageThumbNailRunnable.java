@@ -47,13 +47,13 @@ public class ImageThumbNailRunnable	implements Runnable{
 			File file = new File(path);
 			file.mkdirs();
 			String url = bean.getThumbNail();
-			String name = MD5Utils.md5(bean.getTitle())+url.substring(url.lastIndexOf("/"));
+			String name = url.substring(url.lastIndexOf("/"));
 			String imgPath = path+name;
 			FileUtils.saveImageToLocal(url, imgPath);
-			bean.setThumbNail("/thumb/"+name);
 			FileInputStream fis;
 			try {
-				fis = new FileInputStream(file);
+				File files = new File(imgPath);
+				fis = new FileInputStream(files);
 				BufferedImage bufferedImg = ImageIO.read(fis);
 				int imgWidth = bufferedImg.getWidth();
 				int imgHeight = bufferedImg.getHeight();

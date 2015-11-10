@@ -58,7 +58,7 @@ public class ImageDownloadRunable implements Runnable{
 			FileUtils.saveImageToLocal(url, imgPath);
 		}
 		bean.setImgPaths(contextPaths.toString());
-		
+		bean.println();
 		ImageDao dao = (ImageDao)ApplicationContextUtils.context.getBean("imageDao");
 		dao.insertImageBean(bean);
 	}

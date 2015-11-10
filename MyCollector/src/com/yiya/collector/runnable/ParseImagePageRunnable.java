@@ -40,12 +40,10 @@ public class ParseImagePageRunnable implements Runnable{
 
     private void parseList(){
     	ArrayList<ImageBean> imageBeans = pageParse.getImageBeans(bean);
-    	ParseImageRunnable task = new ParseImageRunnable(imageBeans.get(0),pageParse);
-        ExcutorServiceUtils.getInstance().getThreadPool().submit(task);
-//        for(ImageBean bean : imageBeans){	//开始解析详情
-//            System.out.println(bean.getTitle());
-//            ParseImageRunnable task = new ParseImageRunnable(bean,pageParse);
-//            ExcutorServiceUtils.getInstance().getThreadPool().submit(task);
-//        }
+        for(ImageBean bean : imageBeans){	//开始解析详情
+            System.out.println(bean.getTitle());
+            ParseImageRunnable task = new ParseImageRunnable(bean,pageParse);
+            ExcutorServiceUtils.getInstance().getThreadPool().submit(task);
+        }
     }
 }

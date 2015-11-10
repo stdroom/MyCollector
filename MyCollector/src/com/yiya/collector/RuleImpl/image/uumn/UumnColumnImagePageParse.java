@@ -63,11 +63,21 @@ public class UumnColumnImagePageParse implements ColumnImagePageParse{
                         if(bean.hasAttr("alt")){	// 标题
                             title = bean.attr("alt");
                         }
-                        if(bean.hasAttr("src")){	// 图像地址
-                        	if(bean.attr("src").trim().contains("http")){
-                        		imgUrl = bean.attr("src").trim();
+                        if(bean.hasAttr("data-original")){	// 图像地址
+                        	if(bean.attr("data-original").trim().contains("http")){
+                        		imgUrl = bean.attr("data-original").trim();
                             }else{
-                            	imgUrl = pageBean.getBaseUrl()+bean.attr("src").trim();
+                            	imgUrl = pageBean.getBaseUrl()+bean.attr("data-original").trim();
+                            }
+                        }
+                        
+                        if("".equals(imgUrl)){
+                        	if(bean.hasAttr("src")){	// 图像地址
+                            	if(bean.attr("src").trim().contains("http")){
+                            		imgUrl = bean.attr("src").trim();
+                                }else{
+                                	imgUrl = pageBean.getBaseUrl()+bean.attr("src").trim();
+                                }
                             }
                         }
                     }

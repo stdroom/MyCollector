@@ -7,11 +7,16 @@
         <result column="baseUrl" property="baseUrl"/>
         <result column="indexUrl" property="indexUrl"/>
         <result column="hasNext" property="hasNext"/>
+        <result column="type" property="type"/>
         <result column="isParseError" property="isParseError"/>
     </resultMap>
-     <select id="getColumnEachPageDaoList" resultMap="columnEachPageBean">
-         select * from ColumnEachPage
+     <select id="getColumnEachPageDaoList" parameterType="int" resultMap="columnEachPageBean">
+         select * from ColumnEachPage where type=#{type}
      </select>
+     <insert id="addColumnEachPageDao" parameterType="com.yiya.collector.bean.ColumnEachPageBean" flushCache="true">
+          INSERT INTO ColumnEachPage (cate_id,baseUrl,indexUrl,type) VALUES 
+            (#{cata_id},#{baseUrl},#{indexUrl},#{type})
+     </insert>
      <update id="udpateUser" parameterType="com.yiya.collector.bean.ColumnEachPageBean">
           UPDATE ColumnEachPage SET totalNum=#{totalNum},currentPageUrl=#{currentPageUrl} WHERE cate_id=#{cata_id}
      </update>
