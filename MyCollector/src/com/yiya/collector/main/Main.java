@@ -11,6 +11,7 @@ import com.yiya.collector.bean.ColumnEachPageBean;
 import com.yiya.collector.bean.ImageBean;
 import com.yiya.collector.dao.ColumnEachPageDao;
 import com.yiya.collector.dao.ImageDao;
+import com.yiya.collector.runnable.ImageThumbNailRunnable;
 import com.yiya.collector.runnable.ParseImagePageRunnable;
 import com.yiya.collector.utils.ApplicationContextUtils;
 import com.yiya.collector.utils.ExcutorServiceUtils;
@@ -37,23 +38,6 @@ public class Main {
 //        bean.setBaseUrl("http://www.fengdu100.com/paoniu/");
 //        ParseRunnable run = new ParseRunnable(bean,new FengDuCloumnPageParse());
     	
-    	ColumnEachPageDao dao = (ColumnEachPageDao)ApplicationContextUtils.context.getBean("columnEachPageDao");
-//    	String array[] = {"siwa/","xinggan/","rihan/","chemo/","qingchun/","zipai/"};
-//    	int size = array.length;
-//    	for(int i = 0 ; i < size ;i++){
-//    		ColumnEachPageBean bean = new ColumnEachPageBean();
-//    		bean.setIndexUrl("http://www.uumnt.com/"+array[i]);
-//    		bean.setBaseUrl("http://www.uumnt.com/");
-//    		bean.setType(0);
-//    		dao.addColumnEachPageDao(bean);
-//    	}
-    	ArrayList<ColumnEachPageBean> beans = (ArrayList<ColumnEachPageBean>)dao.getColumnEachPageDaoList(0);
-    	int size =  beans.size();
-    	for(int i = 0 ; i < size ; i++){
-    		ColumnEachPageBean bean = beans.get(i);
-    		ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new UumnColumnImagePageParse());
-    		ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
-    	}
     	
 //    	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //    	ColumnEachPageDao dao = (ColumnEachPageDao)context.getBean("columnEachPageDao");
@@ -66,12 +50,18 @@ public class Main {
 //    		}
 //    	}
     	
-//    	ImageDao dao  = (ImageDao)ApplicationContextUtils.context.getBean("imageDao");
-//    	ImageBean bean = new ImageBean();
-//    	bean.setBaseUrl("baseUrl");
-//    	bean.setCata_id(1101);
-//    	bean.setContextHtml(";asd;asd");
-//    	dao.insertImageBean(bean);
+    	ImageDao dao  = (ImageDao)ApplicationContextUtils.context.getBean("imageDao");
+    	ArrayList<ImageBean> beans = (ArrayList<ImageBean>)dao.queryAllImageBean();
+    	if(beans!=null){
+    		System.out.println("beans:"+beans.size());
+    		int size = beans.size();
+    		for(int i=0;i<size;i++){
+    			ImageThumbNailRunnable run = new ImageThumbNailRunnable(beans.get(i));
+    			ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
+    		}
+    	}else{
+    		System.out.println("beans is null");
+    	}
     }
 
 }

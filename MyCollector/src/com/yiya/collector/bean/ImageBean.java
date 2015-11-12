@@ -58,6 +58,9 @@ public class ImageBean {
     String localPaths = "";
     
     Document doc = null;
+    
+    int width = 0;
+    int height = 0;
 
 	public int getImg_id() {
 		return img_id;
@@ -216,6 +219,22 @@ public class ImageBean {
 
 	public void setImg_id(int img_id) {
 		this.img_id = img_id;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
 	}
 	
 	public void println(){

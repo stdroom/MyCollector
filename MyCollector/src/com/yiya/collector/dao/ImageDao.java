@@ -29,5 +29,7 @@ public interface ImageDao {
 	
 	public void insertImageBean(ImageBean bean);
 	
+	public void updateImageBeanById(ImageBean bean);
+	
 }
 
