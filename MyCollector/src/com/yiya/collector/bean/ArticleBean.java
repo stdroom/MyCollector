@@ -32,6 +32,10 @@ public class ArticleBean {
     String author = "";
     // 文章摘要
     String contextSummary = "";
+    
+    // 文章发表日期
+    String contextTime="";
+    
     // 标签
     ArrayList<String> tags = new ArrayList<String>();
 
@@ -137,5 +141,21 @@ public class ArticleBean {
 
     public void setContextHtml(String contextHtml) {
         this.contextHtml = contextHtml;
+    }
+    
+    public String getContextTime() {
+		return contextTime;
+	}
+
+	public void setContextTime(String contextTime) {
+		this.contextTime = contextTime;
+	}
+
+	public void pringln(){
+    	System.out.println("title:"+title
+    			+"\n"+"contextSummary:"+contextSummary
+    			+"\n"+"time:"+contextTime
+    			+"\n"+"imgPath:"+imgPath
+    			+"\n"+"contextHtml:"+contextHtml);
     }
 }

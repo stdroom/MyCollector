@@ -7,6 +7,7 @@ import com.yiya.collector.utils.ExcutorServiceUtils;
 
 /**
  * Created by xiaoma on 2015/11/5.
+ * 图片详情页 解析
  */
 public class ParseImageRunnable implements Runnable{
 

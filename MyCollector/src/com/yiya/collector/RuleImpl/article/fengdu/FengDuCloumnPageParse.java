@@ -8,21 +8,21 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.yiya.collector.RulesInterf.ColumnPageParse;
+import com.yiya.collector.RulesInterf.ColumnArticlePageParse;
 import com.yiya.collector.bean.ArticleBean;
 import com.yiya.collector.bean.ColumnEachPageBean;
 
 /**
  * Created by xiaoma on 2015/11/2.
  */
-public class FengDuCloumnPageParse implements ColumnPageParse{
+public class FengDuCloumnPageParse implements ColumnArticlePageParse{
 
     /**
      * 风度男人网的栏目解析
      * @return
      */
     @Override
-    public ArrayList<ArticleBean> getArticleBean(ColumnEachPageBean pageBean) {
+    public ArrayList<ArticleBean> getArticleBeans(ColumnEachPageBean pageBean) {
         Document content = null;
         try {
             Document doc;
