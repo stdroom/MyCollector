@@ -9,7 +9,7 @@ public class ColumnEachPageBean {
     //栏目分类id
     private int cata_id = 0;
 
-    // 网站域名
+    // 拼接地址
     private String baseUrl = "";
 
     // 栏目首页 地址

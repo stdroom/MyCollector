@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <bean id="jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+	    <property name="driverClassName">  
+	        <value>org.gjt.mm.mysql.Driver</value>  
+	    </property>  
+	    <property name="url">  
+	        <value>jdbc:mysql://115.28.224.54:3306/test?useUnicode=true&amp;characterEncoding=UTF-8</value>  
+	       <!--springmybaitis是我的数据库  -->
+	    </property>  
+	    <property name="username">  
+	        <value>root</value>  
+	    </property>  
+	    <property name="password">  
+	        <value>378640336lX</value>  
+	    </property>  
+	</bean>  
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+	    <property name="dataSource" ref="jdbcDataSource" />  
+	    <property name="configLocation" value="classpath:mybatis.xml"></property>  
+	</bean>  
+    
+	<bean id="columnEachPageDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+	    <property name="mapperInterface" value="com.yiya.collector.dao.ColumnEachPageDao"></property>  
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>  
+	</bean>  
+	<bean id="imageDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+	    <property name="mapperInterface" value="com.yiya.collector.dao.ImageDao"></property>  
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>  
+	</bean>  
+	
+</beans>

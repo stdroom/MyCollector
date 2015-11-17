@@ -11,7 +11,7 @@ import com.yiya.collector.bean.ImageBean;
 public interface ColumnImagePageParse {
 
     // 根据页面获取该页面的文章列表数据
-    public ArrayList<ImageBean> getImageBeans(ColumnEachPageBean bean);
+    public ArrayList<ImageBean> getImageBeans(ColumnEachPageBean pageBean);
 
     // 根据页面javabean对象 递归判断 是否有下一页 并不断解析
     public ColumnEachPageBean getNextPage(ColumnEachPageBean pageBean);
