@@ -45,7 +45,7 @@ http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
                </props>
            </property>
 		<property name="packagesToScan">
-			<value>com.sxt.po</value>
+			<value>com.sxt.bean</value>
 		</property>
    </bean>  
 
