@@ -18,6 +18,7 @@ public class MyInterceptor implements HandlerInterceptor {
 
 	@Override
 	public void postHandle(HttpServletRequest request,HttpServletResponse response, Object handler,	ModelAndView modelAndView) throws Exception {
+		response.setCharacterEncoding("GBK");
 		System.out.println("Action执行之后，生成视图之前执行！！");
 	}
 

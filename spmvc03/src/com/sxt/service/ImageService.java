@@ -12,6 +12,8 @@
 
 package com.sxt.service;
 
+import java.util.ArrayList;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -34,7 +36,7 @@ public class ImageService {
 
 	public void add(){
 		Image image = new Image();
-		image.setTitle("hah");
+		image.setTitle("hahs");
 		imageDao.addImage(image);
 	}
 	
@@ -48,6 +50,10 @@ public class ImageService {
 
 	public void setImageDao(ImageDao imageDao) {
 		this.imageDao = imageDao;
+	}
+	
+	public ArrayList<Image> getImages(int page,int pageSize){
+		return imageDao.getImages(page, pageSize);
 	}
 }
 
