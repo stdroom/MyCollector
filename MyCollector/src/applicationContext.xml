@@ -12,7 +12,7 @@
 	        <value>org.gjt.mm.mysql.Driver</value>  
 	    </property>  
 	    <property name="url">  
-	        <value>jdbc:mysql://115.28.224.54:3306/test?useUnicode=true&amp;characterEncoding=UTF-8</value>  
+	        <value>jdbc:mysql://115.28.224.54:3306/zblog?characterEncoding=UTF-8</value>  
 	       <!--springmybaitis是我的数据库  -->
 	    </property>  
 	    <property name="username">  

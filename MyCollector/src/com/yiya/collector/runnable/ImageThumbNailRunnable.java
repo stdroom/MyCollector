@@ -33,7 +33,7 @@ import com.yiya.collector.utils.MD5Utils;
  * @version  	 
  */
 public class ImageThumbNailRunnable	implements Runnable{
-
+		static int count = 0;
 		ImageBean bean ; 
 		
 		public ImageThumbNailRunnable(ImageBean bean){
@@ -64,7 +64,7 @@ public class ImageThumbNailRunnable	implements Runnable{
 			} catch(IOException e){
 				e.printStackTrace();
 			}
-			
+			System.out.println(count++ +":"+bean.getId()+":"+bean.getCata_id()+ bean.getTitle());
 			ImageDao dao = (ImageDao)ApplicationContextUtils.context.getBean("imageDao");
 			dao.updateImageBeanById(bean);
 		}

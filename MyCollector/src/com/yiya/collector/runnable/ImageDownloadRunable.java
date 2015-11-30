@@ -36,15 +36,16 @@ public class ImageDownloadRunable implements Runnable{
 	
 	@Override
 	public void run() {
-		String path = "D://test/"+bean.getCata_id()+"/";
+//		String path = "D://test/"+bean.getCata_id()+"/";
 		String contextPath = MD5Utils.md5(bean.getTitle())+"/";
-		path = path +contextPath;
+//		path = path +contextPath;
 		
-		File file = new File(path);
-		file.mkdirs();
+//		File file = new File(path);
+//		file.mkdirs();
 		ArrayList<String> urls = bean.getImgPath();
 		bean.setPageNum(urls.size());
 		StringBuffer contextPaths = new StringBuffer();
+		StringBuffer srcPaths = new StringBuffer();
 		int size = urls.size();
 		for(int i = 0 ; i < size;i++){
 			String url = urls.get(i);
@@ -54,13 +55,24 @@ public class ImageDownloadRunable implements Runnable{
 			}else{
 				contextPaths.append(";"+contextPath+name);
 			}
-			String imgPath = path+name;
-			FileUtils.saveImageToLocal(url, imgPath);
+			if(i == 0){
+				srcPaths.append(url);
+			}else{
+				srcPaths.append(";"+url);
+			}
+//			String imgPath = path+name;
+//			FileUtils.saveImageToLocal(url, imgPath);
 		}
-		bean.setImgPaths(contextPaths.toString());
-		bean.println();
+//		bean.setImgPaths(contextPaths.toString());
+		bean.setSrcImgPaths(srcPaths.toString());
 		ImageDao dao = (ImageDao)ApplicationContextUtils.context.getBean("imageDao");
-		dao.insertImageBean(bean);
+		if(dao.findByContextHtml(bean)==1){
+			dao.updateImageSrcPath(bean);
+			bean.println();
+		}else{
+			System.out.println("啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈");
+			dao.insertImageBean(bean);
+		}
 	}
 
 }

@@ -1,2 +1,4 @@
-/test/
+/applicationContext.xml
 /com/
+/mybatis.xml
+/test/

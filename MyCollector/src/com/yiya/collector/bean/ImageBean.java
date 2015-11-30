@@ -10,65 +10,67 @@ import org.jsoup.nodes.Document;
 public class ImageBean {
 
     // 主键
-    int img_id = 0;
-    // 图片题目
-    String title = "";
-    
-    // 文章原链接地址首页
-    String contextHtml = "";
-    
-    //分类
-    int cata_id = 0;
-
-    //图片有几页 并非有多少张图片
-    int pageNum = 0;
-
-    // 当前正在解析的页面
-    int currentPage = 0;
-    
-    // 当前解析网页的地址
-    String currentPageUrl = "";
-
-    boolean hasNext = false;
-
-    private String baseUrl = "";
-    
-    // 是否发生解析异常
-    private boolean isParseError = false;
-
-    // 解析异常日志
-    private String exception  = "";
-
+    int id = 0;
     //创建日期
     String created_at = "";
 
     //更新日期
     String updateed_at = "";
     
-    // 缩略图地址
-    String thumbNail = "";
-
     // 原图片路径
     ArrayList<String> imgPath = new ArrayList<String>();
     // 本地图片路径
     ArrayList<String> localPath = new ArrayList<String>();
     
-    // 服务端用
-    String imgPaths  = "";
     String localPaths = "";
     
     Document doc = null;
     
-    int width = 0;
-    int height = 0;
+    private String contextPath = "";
+	
+	private String contextHtml = "";
+	
+	private Integer currentPage = 0;
+	
+	private String currentPageUrl = "";
+	
+	private Integer cata_id = 0;
+	
+	private boolean hasNext = false;
+	
+	private String baseUrl = "";
+	
+	private boolean isParseError = false;
 
-	public int getImg_id() {
-		return img_id;
-	}
-
-	public void setPost_id(int img_id) {
-		this.img_id = img_id;
-	}
+	private String exception = "";
+	
+	
+	// 本地图片路径
+	private String imgPaths = "";
+	//原图片 路径
+	private String srcImgPaths = "";
+	// 云图片路径
+	private String yunImgPaths = "";
+	
+	// 
+	private String thumbSrc = "";
+	// �ƴ洢·��
+	private String thumbYun = "";
+	// ����·��
+	private String thumbNail = "";
+	
+	private Integer width = 0;
+	private Integer height = 0;
+	
+	private Integer zan = 0;
+	private Integer favor = 0;
+	
+	
+	private Integer pageNum;
+	
+	private String title;
+	
+	
 
 	public String getTitle() {
 		return title;
@@ -111,23 +113,6 @@ public class ImageBean {
 		this.currentPage = currentPage;
 	}
 
-	
-
-	public boolean isHasNext() {
-		return hasNext;
-	}
-
-	public void setHasNext(boolean hasNext) {
-		this.hasNext = hasNext;
-	}
-
-	public boolean isParseError() {
-		return isParseError;
-	}
-
-	public void setParseError(boolean isParseError) {
-		this.isParseError = isParseError;
-	}
 
 	public String getException() {
 		return exception;
@@ -217,10 +202,6 @@ public class ImageBean {
 		this.localPaths = localPaths;
 	}
 
-	public void setImg_id(int img_id) {
-		this.img_id = img_id;
-	}
-
 	public int getWidth() {
 		return width;
 	}
@@ -237,12 +218,114 @@ public class ImageBean {
 		this.height = height;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getContextPath() {
+		return contextPath;
+	}
+
+	public void setContextPath(String contextPath) {
+		this.contextPath = contextPath;
+	}
+
+	public boolean isHasNext() {
+		return hasNext;
+	}
+
+	public void setHasNext(boolean hasNext) {
+		this.hasNext = hasNext;
+	}
+
+	public boolean isParseError() {
+		return isParseError;
+	}
+
+	public void setParseError(boolean isParseError) {
+		this.isParseError = isParseError;
+	}
+
+
+	public String getYunImgPaths() {
+		return yunImgPaths;
+	}
+
+	public void setYunImgPaths(String yunImgPaths) {
+		this.yunImgPaths = yunImgPaths;
+	}
+
+	public String getThumbSrc() {
+		return thumbSrc;
+	}
+
+	public void setThumbSrc(String thumbSrc) {
+		this.thumbSrc = thumbSrc;
+	}
+
+	public String getThumbYun() {
+		return thumbYun;
+	}
+
+	public void setThumbYun(String thumbYun) {
+		this.thumbYun = thumbYun;
+	}
+
+	public Integer getZan() {
+		return zan;
+	}
+
+	public void setZan(Integer zan) {
+		this.zan = zan;
+	}
+
+	public Integer getFavor() {
+		return favor;
+	}
+
+	public void setFavor(Integer favor) {
+		this.favor = favor;
+	}
+
+	public void setCurrentPage(Integer currentPage) {
+		this.currentPage = currentPage;
+	}
+
+	public void setCata_id(Integer cata_id) {
+		this.cata_id = cata_id;
+	}
+
+	public void setWidth(Integer width) {
+		this.width = width;
+	}
+
+	public void setHeight(Integer height) {
+		this.height = height;
+	}
+
+	public void setPageNum(Integer pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public String getSrcImgPaths() {
+		return srcImgPaths;
+	}
+
+	public void setSrcImgPaths(String srcImgPaths) {
+		this.srcImgPaths = srcImgPaths;
+	}
+
 	public void println(){
 //		#{cata_id},#{title},#{thumbNail},#{pageNum}#{imgPaths},#{contextPath},#{contextHtml},#{currentPageUrl},#{baseUrl
 		if("".equals(thumbNail)
 	|| "".equals(title)
 	|| "".equals(pageNum)
 	|| "".equals(imgPaths)
+	|| "".equals(srcImgPaths)
 	|| "".equals(contextHtml)
 	|| "".equals(currentPageUrl)
 	|| "".equals(baseUrl)
@@ -251,6 +334,7 @@ public class ImageBean {
 					+"\n"+"title:"+title
 					+"\n"+"thumbNail:"+thumbNail
 					+"\n"+"pageNum:"+pageNum
+					+"\n"+"srcImgpaths"+srcImgPaths
 					+"\n"+"imgPaths:"+imgPaths
 					+"\n"+"contextHtml:"+contextHtml
 					+"\n"+"currentPageUrl:"+currentPageUrl

@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="com.yiya.collector.dao.ImageDao">
     <resultMap id="resultImageBean" type="com.yiya.collector.bean.ImageBean">
-        <id column="img_id" property="img_id"/>
+        <id column="id" property="id"/>
         <result column="cata_id" property="cata_id"/>
         <result column="thumbNail" property="thumbNail"/>
         <result column="title" property="title"/>
@@ -11,16 +11,23 @@
         <result column="height" property="height"/>
     </resultMap>
      <select id="queryAllImageBean" resultMap="resultImageBean">
-         select * from ImageBean
+         select * from ImageBean where width=0;
      </select>
-     <insert id="insertImageBean" parameterType="com.yiya.collector.bean.ImageBean" flushCache="true">
-          INSERT INTO ImageBean (cata_id,title,thumbNail,pageNum,imgPaths,contextHtml,currentPageUrl,baseUrl) VALUES 
-            (#{cata_id},#{title},#{thumbNail},#{pageNum},#{imgPaths},#{contextHtml},#{currentPageUrl},#{baseUrl})
+     <select id="findByContextHtml" parameterType="com.yiya.collector.bean.ImageBean" resultType="int">
+         select count(*) from ImageBean where contextHtml=#{contextHtml}
+     </select>
+     <insert id="insertImageBean" parameterType="com.yiya.collector.bean.ImageBean">
+          INSERT INTO ImageBean (cata_id,title,thumbNail,pageNum,imgPaths,srcImgPaths,contextHtml,currentPageUrl,baseUrl) VALUES 
+            (#{cata_id},#{title},#{thumbNail},#{pageNum},#{imgPaths},#{srcImgPaths},#{contextHtml},#{currentPageUrl},#{baseUrl})
      </insert>
      <delete id="deleteImageBean" parameterType="int">
          DELETE FROM ImageBean WHERE id=#{id} 
      </delete>
      <update id="updateImageBeanById" parameterType="com.yiya.collector.bean.ImageBean" flushCache="true">
-         update ImageBean set width=#{width},height=#{height} where img_id=#{img_id}
+         update ImageBean set width=#{width},height=#{height} where id=#{id}
+     </update>
+     
+     <update id="updateImageSrcPath" parameterType="com.yiya.collector.bean.ImageBean" flushCache="true">
+         update ImageBean set imgSrcPath=#{imgSrcPath} where contextHtml=#{contextHtml}
      </update>
 </mapper>

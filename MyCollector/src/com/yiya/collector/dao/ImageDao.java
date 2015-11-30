@@ -31,5 +31,9 @@ public interface ImageDao {
 	
 	public void updateImageBeanById(ImageBean bean);
 	
+	public void updateImageSrcPath(ImageBean bean);
+	
+	public int findByContextHtml(ImageBean bean);
+	
 }
 
