@@ -18,11 +18,15 @@ public class MyInterceptor implements HandlerInterceptor {
 
 	@Override
 	public void postHandle(HttpServletRequest request,HttpServletResponse response, Object handler,	ModelAndView modelAndView) throws Exception {
+		System.out.println(response.getCharacterEncoding());
+		response.setCharacterEncoding("utf-8");
+		System.out.println(response.getCharacterEncoding());
 		System.out.println("Action执行之后，生成视图之前执行！！");
 	}
 
 	@Override
 	public boolean preHandle(HttpServletRequest request,HttpServletResponse response, Object handler) throws Exception {
+		System.out.println(request.getCharacterEncoding());
 		System.out.println("action之前执行！！！");
 		return true;  //继续执行action
 	}
