@@ -17,8 +17,8 @@
          select count(*) from ImageBean where contextHtml=#{contextHtml}
      </select>
      <insert id="insertImageBean" parameterType="com.yiya.collector.bean.ImageBean">
-          INSERT INTO ImageBean (cata_id,title,thumbNail,pageNum,imgPaths,srcImgPaths,contextHtml,currentPageUrl,baseUrl) VALUES 
-            (#{cata_id},#{title},#{thumbNail},#{pageNum},#{imgPaths},#{srcImgPaths},#{contextHtml},#{currentPageUrl},#{baseUrl})
+          INSERT INTO ImageBean (cata_id,title,thumbNail,pageNum,imgPaths,srcImgPaths,contextHtml,currentPageUrl,baseUrl,width,height) VALUES 
+            (#{cata_id},#{title},#{thumbNail},#{pageNum},#{imgPaths},#{srcImgPaths},#{contextHtml},#{currentPageUrl},#{baseUrl},#{width},#{height})
      </insert>
      <delete id="deleteImageBean" parameterType="int">
          DELETE FROM ImageBean WHERE id=#{id} 

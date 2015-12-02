@@ -27,7 +27,7 @@ import com.yiya.collector.utils.MD5Utils;
  * @version  	 
  */
 public class ImageDownloadRunable implements Runnable{
-
+	static int taoshu = 1;
 	ImageBean bean ; 
 	
 	public ImageDownloadRunable(ImageBean bean){
@@ -66,13 +66,13 @@ public class ImageDownloadRunable implements Runnable{
 //		bean.setImgPaths(contextPaths.toString());
 		bean.setSrcImgPaths(srcPaths.toString());
 		ImageDao dao = (ImageDao)ApplicationContextUtils.context.getBean("imageDao");
-		if(dao.findByContextHtml(bean)==1){
-			dao.updateImageSrcPath(bean);
-			bean.println();
-		}else{
-			System.out.println("啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈");
+//		if(dao.findByContextHtml(bean)==1){
+//			dao.updateImageSrcPath(bean);
+//			bean.println();
+//		}else{
+			System.out.println("哈哈taoshu:"+taoshu++);
 			dao.insertImageBean(bean);
-		}
+//		}
 	}
 
 }
