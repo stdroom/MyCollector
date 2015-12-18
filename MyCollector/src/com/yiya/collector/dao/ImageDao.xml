@@ -9,9 +9,10 @@
         <result column="title" property="title"/>
         <result column="width" property="width"/>
         <result column="height" property="height"/>
+        <result column="srcImgPaths" property="srcImgPaths"/>
     </resultMap>
      <select id="queryAllImageBean" resultMap="resultImageBean">
-         select * from ImageBean where width=0;
+         select * from ImageBean where cata_id=1301;
      </select>
      <select id="findByContextHtml" parameterType="com.yiya.collector.bean.ImageBean" resultType="int">
          select count(*) from ImageBean where contextHtml=#{contextHtml}
@@ -21,10 +22,14 @@
             (#{cata_id},#{title},#{thumbNail},#{pageNum},#{imgPaths},#{srcImgPaths},#{contextHtml},#{currentPageUrl},#{baseUrl},#{width},#{height})
      </insert>
      <delete id="deleteImageBean" parameterType="int">
-         DELETE FROM ImageBean WHERE id=#{id} 
+         DELETE FROM ImageBean WHERE id=#{id}
      </delete>
      <update id="updateImageBeanById" parameterType="com.yiya.collector.bean.ImageBean" flushCache="true">
          update ImageBean set width=#{width},height=#{height} where id=#{id}
+     </update>
+     
+     <update id="updateImageThumbById" parameterType="com.yiya.collector.bean.ImageBean" flushCache="true">
+         update ImageBean set width=#{width},height=#{height},thumbYun=#{thumbYun},thumbSrc=#{thumbSrc} where id=#{id}
      </update>
      
      <update id="updateImageSrcPath" parameterType="com.yiya.collector.bean.ImageBean" flushCache="true">

@@ -53,6 +53,9 @@ public class Main {
     	if(beans!=null){
     		System.out.println("beans:"+beans.size());
     		int size = beans.size();
+    		if(size > 10){
+    			size = 10;
+    		}
     		for(int i=0;i<size;i++){
     			ImageThumbNailRunnable run = new ImageThumbNailRunnable(beans.get(i));
     			ExcutorServiceUtils.getInstance().getThreadPool().submit(run);

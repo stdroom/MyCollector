@@ -326,6 +326,13 @@ public class ImageBean {
 					+"\n"+"baseUrl:"+baseUrl);
 		}
 	}
-	
+
+	public Integer getWidth() {
+		return width;
+	}
+
+	public Integer getHeight() {
+		return height;
+	}
 	
 }

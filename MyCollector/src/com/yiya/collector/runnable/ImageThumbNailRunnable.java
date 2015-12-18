@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import com.ericsoft.bmob.restapi.Bmob;
+import com.mysql.jdbc.StringUtils;
 import com.yiya.collector.bean.ImageBean;
 import com.yiya.collector.dao.ImageDao;
 import com.yiya.collector.utils.ApplicationContextUtils;
@@ -46,9 +48,9 @@ public class ImageThumbNailRunnable	implements Runnable{
 			
 			File file = new File(path);
 			file.mkdirs();
-			String url = bean.getThumbNail();
-			String name = url.substring(url.lastIndexOf("/"));
-			String imgPath = path+name;
+			String url = getThumb(bean);
+			String name = url.substring(url.lastIndexOf("/")+1);
+			String imgPath = path+bean.getId()+name;
 			FileUtils.saveImageToLocal(url, imgPath);
 			FileInputStream fis;
 			try {
@@ -64,9 +66,28 @@ public class ImageThumbNailRunnable	implements Runnable{
 			} catch(IOException e){
 				e.printStackTrace();
 			}
-			System.out.println(count++ +":"+bean.getId()+":"+bean.getCata_id()+ bean.getTitle());
+			Bmob.initBmob("3d1ca7692abf3c88f1a9202a68bde16d",
+					"92b90fae70efb396a2e02611e128923c");
+			// 上传图片
+			String res=Bmob.uploadFile(imgPath);
+			bean.setThumbYun(res);
+			System.out.println(count++ +":"+bean.getId()+":"+bean.getWidth()+":"+bean.getCata_id()+ bean.getTitle()+bean.getThumbYun());
 			ImageDao dao = (ImageDao)ApplicationContextUtils.context.getBean("imageDao");
-			dao.updateImageBeanById(bean);
+			dao.updateImageThumbById(bean);
+		}
+		
+		private String getThumb(ImageBean bean){
+			if(!StringUtils.isNullOrEmpty(bean.getSrcImgPaths())){
+				String[] src = bean.getSrcImgPaths().split(";");
+				if(src.length>0){
+					return src[0];
+				}else{
+					System.out.println("没有图片");
+					return "";
+				}
+			}else{
+				return "图片字段为空";
+			}
 		}
 }
 

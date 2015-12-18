@@ -35,5 +35,7 @@ public interface ImageDao {
 	
 	public int findByContextHtml(ImageBean bean);
 	
+	public void updateImageThumbById(ImageBean bean);
+	
 }
 
