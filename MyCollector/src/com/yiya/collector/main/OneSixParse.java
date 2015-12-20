@@ -29,14 +29,35 @@ import com.yiya.collector.utils.ExcutorServiceUtils;
 public class OneSixParse {
 
 	public static void main(String[] args) {
-    	ColumnEachPageBean bean = new ColumnEachPageBean();
-    	bean.setBaseUrl("http://www.169bb.com/");
+//    	ColumnEachPageBean bean = new ColumnEachPageBean();
+//    	bean.setBaseUrl("http://www.169bb.com/");
+//    	// 高跟丝袜
+//    	bean.setIndexUrl("http://www.169bb.com/info/4_1.htm");
+//    	bean.setCata_id(1204);
+//    	// 性感美女
+//    	bean.setIndexUrl("http://www.169bb.com/info/1_1.htm");
+//    	bean.setCata_id(1203);
+    	// 西洋美女
 //    	bean.setIndexUrl("http://www.169bb.com/info/5_1.htm");
 //    	bean.setCata_id(1201);
-    	bean.setIndexUrl("http://www.169bb.com/info/2_1.htm");
-    	bean.setCata_id(1202);
-    	ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new OneSixBbImagePageParse());
-    	ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
+    	//网友自拍
+//    	bean.setIndexUrl("http://www.169bb.com/info/2_1.htm");
+//    	bean.setCata_id(1202);
+    	
+//    	bean.setBaseUrl("http://www.169mt.com/");
+//    	// 美女明星
+//    	bean.setIndexUrl("http://www.169mt.com/mnmx/index.htm");
+//    	bean.setCata_id(1304);
+    	String[] index = {"http://www.169mt.com/wlhr/index.htm",
+    			"http://www.169mt.com/xgmn/index.htm","http://www.169mt.com/swmt/index.htm"};
+    	for(int i = 0;i<3;i++){
+    		ColumnEachPageBean bean = new ColumnEachPageBean();
+    		bean.setIndexUrl(index[i]);
+    		bean.setBaseUrl("http://www.169mt.com/");
+    		bean.setCata_id(1301+i);
+    		ParseImagePageRunnable run = new ParseImagePageRunnable(bean,new OneSixBbImagePageParse());
+    		ExcutorServiceUtils.getInstance().getThreadPool().submit(run);
+    	}
 	}
 
 }

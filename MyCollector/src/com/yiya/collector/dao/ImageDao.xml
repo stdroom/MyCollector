@@ -12,7 +12,7 @@
         <result column="srcImgPaths" property="srcImgPaths"/>
     </resultMap>
      <select id="queryAllImageBean" resultMap="resultImageBean">
-         select * from ImageBean where cata_id=1301;
+         select * from ImageBean where cata_id &lt;&gt; 1201;
      </select>
      <select id="findByContextHtml" parameterType="com.yiya.collector.bean.ImageBean" resultType="int">
          select count(*) from ImageBean where contextHtml=#{contextHtml}
